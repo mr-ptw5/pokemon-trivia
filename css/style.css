@@ -13,6 +13,7 @@ img {
     filter:  brightness(0%) blur(50px);
     transition: filter 1.5s, height .5s;
     display: block;
+    max-width: 80%;
 }
 
 @media screen and (max-width: 600px) {
