@@ -10,10 +10,13 @@ button {
 
 img {
     /* visibility: hidden; */
-    filter:  brightness(0%) blur(50px);
-    transition: filter 1.5s, height .5s;
+    filter: blur(40px);
+    transition: filter 1s, max-height 1s;
     display: block;
-    max-width: 80%;
+    margin: 0 auto;
+    aspect-ratio: initial;
+    max-width: 99%;
+    max-height: 99%;
 }
 
 @media screen and (max-width: 600px) {
