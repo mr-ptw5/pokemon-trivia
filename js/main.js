@@ -3,9 +3,9 @@ let pokemon
 let blurLevel
 window.onload = () => {
     document.querySelector('body > button').addEventListener('click', setNewPokemon)
-    document.querySelector('body section button + button').addEventListener("click", showSilhouette)
+    document.querySelector('body section button:first-of-type').addEventListener("click", showSilhouette)
+    document.querySelector('body section button + button').addEventListener("click", addDexEntry)
     document.querySelector('body section button + button + button').addEventListener("click", revealPokemon)
-    document.querySelector('body section button:first-of-type').addEventListener("click", addDexEntry)
     document.addEventListener('keydown', keyPressed)
     list = document.querySelector('ul')
     setNewPokemon()
@@ -17,7 +17,7 @@ let setNewPokemon = () => {
     image.style['max-height'] = '5px'
     image.src = '#'
     
-    let button = document.querySelector('body section button + button')
+    let button = document.querySelector('body section button:first-of-type')
     button.textContent = 'Show silhouette'
     button.removeEventListener('click', unblur)
     button.addEventListener('click', showSilhouette)
@@ -50,11 +50,6 @@ let setNewPokemon = () => {
         document.querySelector('body h2').textContent = genus
           console.log(dexEntries.size, 'after')
           addDexEntry()
-        //   pokemon.flavor_text_entries.forEach(entry => {
-            //   addDexEntry()
-        //   })
-
-        //   console.log(dexEntries)
       })
       .catch(err => {
           console.log(`error ${err}`)
@@ -85,7 +80,7 @@ let showSilhouette = () => {
     image.style.visibility = "visible"
     image.style.filter = `blur(${blurLevel}px)`
     image.style['max-height'] = "500px"
-    let button = document.querySelector('body section button + button')
+    let button = document.querySelector('body section button')
     button.textContent = 'Unblur more'
     button.removeEventListener('click', showSilhouette)
     button.addEventListener('click', unblur)
@@ -94,7 +89,7 @@ let showSilhouette = () => {
 let unblur = () => {
     let image = document.querySelector('img')
     blurLevel -= 12
-    let button = document.querySelector('body section button + button')
+    let button = document.querySelector('body section button')
     if (blurLevel < 6) {
         blurLevel = 0
         button.removeEventListener('click', unblur)
