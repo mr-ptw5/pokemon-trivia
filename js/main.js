@@ -10,6 +10,9 @@ window.onload = () => {
 }
 
 let setNewPokemon = () => {
+    let image = document.querySelector('img')
+    image.style.visibility = "hidden"
+    image.style.height = '5px'
     let number = Math.ceil(Math.random() * 905)
     const url = `https://pokeapi.co/api/v2/pokemon-species/${number}/`
     fetch(url)
@@ -33,7 +36,8 @@ let setNewPokemon = () => {
             return (indexOfDuplicateEntry === i)
         })
 
-
+        let genus = data.genera.find(entry => entry.language.name === 'en').genus
+        document.querySelector('body h2').textContent = genus
           console.log(dexEntries.size, 'after')
           addDexEntry()
         //   pokemon.flavor_text_entries.forEach(entry => {
@@ -55,6 +59,20 @@ let revealPokemon = () => {
     else {
         document.querySelector('h3').textContent = pokemon.name
     }
+
+    const url = `https://pokeapi.co/api/v2/pokemon/${pokemon.id}/`
+    fetch(url)
+      .then(res => res.json()) // parse response as JSON
+      .then(data => {
+          let image = document.querySelector('img')
+          image.src = data.sprites.other['official-artwork'].front_default
+          image.style.visibility = "visible"
+          image.style.filter = "brightness(100%) blur(40px)"
+          image.style.height = "500px"
+      })
+      .catch(err => {
+          console.log(`error ${err}`)
+      })
 }
 
 let addDexEntry = () => {

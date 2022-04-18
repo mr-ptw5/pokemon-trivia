@@ -8,6 +8,13 @@ button {
     margin-bottom: 15px;
 }
 
+img {
+    /* visibility: hidden; */
+    filter:  brightness(0%) blur(50px);
+    transition: filter 1.5s, height .5s;
+    display: block;
+}
+
 @media screen and (max-width: 600px) {
     button {
         width: 50%;
