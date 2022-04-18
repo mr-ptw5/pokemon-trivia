@@ -121,7 +121,7 @@ let addDexEntry = () => {
     let elem = document.createElement('p')
     elem.textContent = entry
     li.appendChild(elem)
-    list.appendChild(li)
+    list.insertBefore(li, list.firstChild)
     }
 }
 
