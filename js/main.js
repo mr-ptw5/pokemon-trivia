@@ -15,6 +15,7 @@ let setNewPokemon = () => {
     let image = document.querySelector('img')
     image.style.visibility = "hidden"
     image.style['max-height'] = '5px'
+    image.style.filter = 'blur(40px)'
     image.src = '#'
     
     let button = document.querySelector('body section button:first-of-type')
