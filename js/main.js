@@ -103,7 +103,6 @@ let getImage = () => {
     fetch(url)
       .then(res => res.json()) // parse response as JSON
       .then(data => {
-          console.log('sldfjkd')
           let image = document.querySelector('img')
           image.src = data.sprites.other['official-artwork'].front_default
       })
